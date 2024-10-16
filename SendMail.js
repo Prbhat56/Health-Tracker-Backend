@@ -1,18 +1,18 @@
-require('dotenv').config();
+require("dotenv").config();
 const nodemailer = require("nodemailer");
-const {google} = require("googleapis");
+const { google } = require("googleapis");
 // const config = require("./Mail");
 const OAuth2 = google.auth.OAuth2;
-const PinGenerator = require('./OTP');
+const PinGenerator = require("./OTP");
 
 const OAuth2_client = new OAuth2(process.env.MAIL_ID, process.env.MAIL_SECRET);
 OAuth2_client.setCredentials({ refresh_token: process.env.MAIL_REFRESH_TOKEN });
 
-function sendMail(recipient,data) {
+function sendMail(recipient, data) {
   // data=JSON.stringify(data);
-  console.log('appointment data',data);
-  let sentopt =PinGenerator();
-  console.log('inside sendmail module',sentopt);
+  console.log("appointment data", data);
+  let sentopt = PinGenerator();
+  console.log("inside sendmail module", sentopt);
   const access_token = OAuth2_client.getAccessToken();
   const transport = nodemailer.createTransport({
     service: "gmail",
@@ -25,8 +25,7 @@ function sendMail(recipient,data) {
       accessToken: access_token,
     },
   });
-  if(!data)
-  {
+  if (!data) {
     const mailOption = {
       from: `The Health Tracker ${process.env.MAIL_USER}`,
       to: recipient,
@@ -42,15 +41,13 @@ function sendMail(recipient,data) {
         return sentopt;
       }
     });
-  }
-  else
-  {
-    const mailOption2={
+  } else {
+    const mailOption2 = {
       from: `The Health Tracker ${config.user}`,
       to: recipient,
-      subject:"Appointment scheduled",
-      html:`Your appointment,<br/> ${data[0].date} <br/> ${data[0].time} <br/> ${data[0].message} <br/> is scheduled with ${data[0].doctor}`
-    }
+      subject: "Appointment scheduled",
+      html: `Your appointment,<br/> ${data[0].date} <br/> ${data[0].time} <br/> ${data[0].message} <br/> is scheduled with ${data[0].doctor}`,
+    };
     transport.sendMail(mailOption2, (err, result) => {
       if (err) {
         console.log(err);
@@ -60,9 +57,8 @@ function sendMail(recipient,data) {
         return sentopt;
       }
     });
-
   }
   return sentopt;
 }
 
-module.exports =sendMail;
+module.exports = sendMail;
