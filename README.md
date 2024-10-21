@@ -13,13 +13,11 @@ HealthTracker is the result of the collaborative efforts of a highly skilled and
   - GitHub: [ShivShankarKushwaha](http://github.com/ShivShankarKushwaha)
   - Role: Frontend and Backend Developer
 
-**2. Kumar Deepak**
-  - GitHub: [kumarDeeepak1](https://github.com/kumarDeeepak1)
-  - Role: Frontend Developer
+**2. Prabhat Kumar**
+  - GitHub: [Prbhat56](https://github.com/Prbhat56)
+  - Role: Backend Developer
 
-**3. Mayank Srivastava**
-  - GitHub: [mayanksrivastava1](https://github.com/mayanksrivastava1)
-  - Role: Backend developer
+
 
 We would like to recognize the professionalism, expertise, and commitment demonstrated by each team member throughout the development lifecycle. Their collective skills and dedication have been instrumental in making HealthTracker a robust and effective health tracking solution.
 
